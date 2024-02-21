@@ -13,7 +13,7 @@ func setupClient() *Client {
 	}
 }
 
-func TestSetClientAppHeaders(t *testing.T) {
+func TestSetClientAppHeaders_DefaultLogic(t *testing.T) {
 	client := setupClient()
 
 	request := LedgerRequest{
@@ -34,7 +34,7 @@ func TestSetClientAppHeaders(t *testing.T) {
 	assert.Equal(t, "4.5.7", req.Header.Get("X-App-Version"))
 }
 
-func TestSetClientAppHeaders_customHeaders(t *testing.T) {
+func TestSetClientAppHeaders_CustomHeadersLogic(t *testing.T) {
 	client := setupClient()
 
 	client.Headers = make(map[string]string)
