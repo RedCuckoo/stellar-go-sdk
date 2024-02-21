@@ -254,14 +254,14 @@ func (c *Client) stream(
 }
 
 func (c *Client) setClientAppHeaders(req *http.Request) {
+	for key, value := range c.Headers {
+		req.Header.Set(key, value)
+	}
+
 	req.Header.Set("X-Client-Name", "go-stellar-sdk")
 	req.Header.Set("X-Client-Version", c.Version())
 	req.Header.Set("X-App-Name", c.AppName)
 	req.Header.Set("X-App-Version", c.AppVersion)
-
-	for key, value := range c.Headers {
-		req.Header.Set(key, value)
-	}
 }
 
 // setDefaultClient sets the default HTTP client when none is provided.
